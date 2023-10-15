@@ -1,0 +1,48 @@
+package controllers;
+//Importando las clases necesarias de Hibernate
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+//Importando el modelo de Usuario
+import models.Empleado;
+
+public class EmpleadoController {
+	
+public String createEmpleado(String apellido ,String nombre,int edad,String sexo,double salario) {
+		
+		// Creando una instancia de SessionFactory de Hibernate
+		SessionFactory sessionFactory ;
+		
+		// Configurando la SessionFactory con el archivo de configuración de Hibernate y añadiendo la clase anotada Usuario
+		sessionFactory = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Empleado.class).buildSessionFactory();
+		
+		Session session;
+		// Abriendo una nueva sesión de Hibernate
+		session = sessionFactory.openSession();
+		
+		try {
+			// Creando una nueva instancia del modelo Usuario
+			Empleado empleado;
+			empleado = new Empleado(apellido,nombre,edad,sexo,salario);
+			
+			// Iniciando una nueva transacción en la sesión de Hibernate
+			session.beginTransaction();
+			
+			// Guardando el nuevo usuario en la base de datos
+			session.save(empleado);
+			
+			// Confirmando y finalizando la transacción en la base de datos
+			session.getTransaction().commit();
+			
+			// Cerrando la SessionFactory para liberar recursos
+			sessionFactory.close();
+			
+			return "Usuario Creado";
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "Error al crear Usuario "+e.getMessage();
+		}
+	}
+	
+}

@@ -1,0 +1,8 @@
+package views;
+import controllers.EmpleadoController;
+public class EmpleadoView {
+public static void main(String[] args) {
+	String empleado;
+	empleado = new Empleado()
+}
+}

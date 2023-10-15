@@ -1,0 +1,12 @@
+package controllers;
+//Importando las clases necesarias de Hibernate
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+//Importando el modelo de Usuario
+import models.Usuario;
+
+public class EmpleadoController {
+
+}
