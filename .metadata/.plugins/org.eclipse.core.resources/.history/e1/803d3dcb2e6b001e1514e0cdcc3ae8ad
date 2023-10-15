@@ -14,7 +14,7 @@ public String createEmpleado(String apellido ,String nombre,int edad,String sexo
 		// Creando una instancia de SessionFactory de Hibernate
 		SessionFactory sessionFactory ;
 		
-		// Configurando la SessionFactory con el archivo de configuración de Hibernate y añadiendo la clase anotada Empleado
+		// Configurando la SessionFactory con el archivo de configuración de Hibernate y añadiendo la clase anotada Usuario
 		sessionFactory = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Empleado.class).buildSessionFactory();
 		
 		Session session;
@@ -22,14 +22,14 @@ public String createEmpleado(String apellido ,String nombre,int edad,String sexo
 		session = sessionFactory.openSession();
 		
 		try {
-			// Creando una nueva instancia del modelo Empleado
+			// Creando una nueva instancia del modelo Usuario
 			Empleado empleado;
 			empleado = new Empleado(apellido,nombre,edad,sexo,salario);
 			
 			// Iniciando una nueva transacción en la sesión de Hibernate
 			session.beginTransaction();
 			
-			// Guardando el nuevo Empleado en la base de datos
+			// Guardando el nuevo usuario en la base de datos
 			session.save(empleado);
 			
 			// Confirmando y finalizando la transacción en la base de datos
@@ -83,10 +83,10 @@ public String updateEmpleado(int idEmpleado, String apellidos) {
 		sessionFactory.close();
 		
 		sessionFactory.close();
-		return "Empleado actualizado correctamente";
+		return "Usuario actualizado correctamente";
 	}catch (Exception e) {
 		e.printStackTrace();
-		return "Error al actualizar Empleado "+e.getMessage();
+		return "Error al actualizar usuario "+e.getMessage();
 	}
 }
 	
@@ -106,7 +106,7 @@ public String updateEmpleado(int idEmpleado, String apellidos) {
 			return empleado.toString();
 		}catch (Exception e) {
 			e.printStackTrace();
-			return "Empleado no existe " + e.getMessage(); 
+			return "Usuario no existe " + e.getMessage(); 
 		
 	}
 	

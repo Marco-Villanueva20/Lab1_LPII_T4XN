@@ -83,10 +83,10 @@ public String updateEmpleado(int idEmpleado, String apellidos) {
 		sessionFactory.close();
 		
 		sessionFactory.close();
-		return "Empleado actualizado correctamente";
+		return "Usuario actualizado correctamente";
 	}catch (Exception e) {
 		e.printStackTrace();
-		return "Error al actualizar Empleado "+e.getMessage();
+		return "Error al actualizar usuario "+e.getMessage();
 	}
 }
 	
@@ -106,7 +106,7 @@ public String updateEmpleado(int idEmpleado, String apellidos) {
 			return empleado.toString();
 		}catch (Exception e) {
 			e.printStackTrace();
-			return "Empleado no existe " + e.getMessage(); 
+			return "Usuario no existe " + e.getMessage(); 
 		
 	}
 	
